@@ -1,0 +1,11 @@
+version: "3"
+services:
+  shopping_list:
+    image: blanke-logistik
+    build: .
+    ports:
+      - "5000:5000"
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
