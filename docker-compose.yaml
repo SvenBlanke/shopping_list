@@ -1,11 +1,16 @@
 version: "3"
 services:
-  shopping_list:
-    image: blanke-logistik
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: shopping_list_db
+    ports:
+      - "5432:5432"
+  shopping_list_app:
     build: .
+    depends_on:
+      - db
     ports:
       - "5000:5000"
-  mysql:
-    image: mysql
-    ports:
-      - "3306:3306"

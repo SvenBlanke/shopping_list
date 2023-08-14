@@ -4,18 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.ts"
+    "start": "nodemon app.ts",
+    "start-docker": "C:\\ProgramFiles\\WindowsPowerShell\\powershell.exe .\\scripts\\build.ps1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "pg": "^8.11.2",
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.10",
+    "@types/pg": "^8.10.2",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.1",
     "ts-node": "^10.9.1",
