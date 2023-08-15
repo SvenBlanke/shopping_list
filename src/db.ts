@@ -1,14 +1,22 @@
-import { Client } from "pg";
+import { Pool } from "pg";
 
-export function connectToDatabase() {
-  const client = new Client({
-    user: "postgres",
-    host: "db",
-    database: "shopping_list_db",
-    password: "postgres",
-    port: 5432
-  });
-  client.connect(() => {
-    console.log("Connected to Database");
-  });
+export const db = new Pool();
+export async function initDB() {
+  try {
+    await db.query("SELECT * FROM stores;");
+    console.log("Successfully connected to Database");
+    return true;
+  } catch (err) {
+    try {
+      await db.query("CREATE TABLE stores(id BIGSERIAL NOT NULL PRIMARY KEY);");
+      await db.query(
+        "CREATE TABLE items(id BIGSERIAL NOT NULL PRIMARY KEY, name VARCHAR(100));"
+      );
+      console.log("Successfully initialized Database");
+      return true;
+    } catch (err) {
+      console.error("Failed to connect to Database");
+      return false;
+    }
+  }
 }

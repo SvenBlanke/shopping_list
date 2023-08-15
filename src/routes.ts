@@ -9,6 +9,6 @@ import {
 export const apiRouter = express.Router();
 
 apiRouter.route("/items").get(getAllItems);
-apiRouter.route("/items").post(createNewItem);
-apiRouter.route("/items").put(updateItem);
-apiRouter.route("/items").delete(deleteItem);
+apiRouter.route("/items/:id").post(createNewItem);
+apiRouter.route("/items/:id").put(updateItem);
+apiRouter.route("/items/:id").delete(deleteItem);
