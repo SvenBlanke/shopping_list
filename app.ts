@@ -2,12 +2,17 @@ require("dotenv").config();
 import express from "express";
 import { apiRouter } from "./src/routes";
 import { initDB } from "./src/db";
+import { notFound } from "./src/middleware/not-found";
+import { errorHandlerMiddleware } from "./src/middleware/error-handler";
 
 const app = express();
 app.use(express.json());
 app.use("/api", apiRouter);
-const port = process.env.PORT || 5000;
 
+app.use(notFound);
+app.use(errorHandlerMiddleware);
+
+const port = process.env.PORT || 5000;
 async function start() {
   let retries = 5;
   while (retries) {

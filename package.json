@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.ts",
-    "start-docker": "C:\\ProgramFiles\\WindowsPowerShell\\powershell.exe .\\scripts\\build.ps1"
+    "start": "nodemon app.ts"
   },
   "keywords": [],
   "author": "",
