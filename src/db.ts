@@ -1,8 +1,6 @@
 import { Pool } from "pg";
 
-export const db = new Pool({
-  host: "localhost"
-});
+export const db = new Pool();
 export async function initDB() {
   try {
     await db.query("SELECT * FROM stores;");
