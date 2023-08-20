@@ -73,5 +73,6 @@ export async function deleteStore(req: express.Request, res: express.Response) {
     "DELETE FROM stores WHERE id = $1 RETURNING *;",
     [id]
   );
+  await db.query("DELETE FROM items WHERE store = $1 RETURNING *;", [id]);
   res.status(200).json(response.rows[0]);
 }
